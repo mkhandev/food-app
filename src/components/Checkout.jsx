@@ -15,6 +15,8 @@ const requestConfig = {
   },
 };
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
 export default function Checkout() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
@@ -25,7 +27,7 @@ export default function Checkout() {
     error,
     sendRequest,
     clearData,
-  } = useHttp("http://localhost:3000/orders", requestConfig);
+  } = useHttp(`${apiBaseUrl}/orders`, requestConfig);
 
   const totalAmount = cartCtx.items.reduce(
     (total, item) => total + item.quantity * item.price,
@@ -106,7 +108,7 @@ export default function Checkout() {
 
         {error && <Error title="Failed to submit order" message={error} />}
 
-        <p className="modal-actions">{actions}}</p>
+        <p className="modal-actions">{actions}</p>
       </form>
     </Modal>
   );

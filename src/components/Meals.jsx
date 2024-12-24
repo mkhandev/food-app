@@ -6,12 +6,14 @@ import Error from './Error.jsx';
 
 const requestConfig = {};
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
 export default function Meals() {
   // const [loadedMeals, setLoadedMeals] = useState([]);
 
   // useEffect(() => {
   //   async function fetchMeals() {
-  //     const response = await fetch("http://localhost:3000/meals");
+  //     const response = await fetch(`${apiBaseUrl}/meals`);
 
   //     if (!response.ok) {
   //       // ...
@@ -28,7 +30,7 @@ export default function Meals() {
     data: loadedMeals,
     isLoading,
     error,
-  } = useHttp('http://localhost:3000/meals', requestConfig, []);
+  } = useHttp(`${apiBaseUrl}/meals`, requestConfig, []);
 
   if (isLoading) {
     return <p className="center">Fetching meals...</p>;

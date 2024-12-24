@@ -5,6 +5,8 @@ import CartContext from "../store/CartContext.jsx";
 
 import { useContext } from "react";
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
 export default function MealItem({ meal }) {
   const cartCtx = useContext(CartContext);
 
@@ -15,7 +17,7 @@ export default function MealItem({ meal }) {
   return (
     <li className="meal-item">
       <article>
-        <img src={`http://localhost:3000/${meal.image}`} alt="meal.name" />
+        <img src={`${apiBaseUrl}/${meal.image}`} alt="meal.name" />
         <div>
           <h3>{meal.name}</h3>
           <p className="meal-item-price">
