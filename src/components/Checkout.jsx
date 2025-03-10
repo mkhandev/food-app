@@ -34,6 +34,10 @@ export default function Checkout() {
     0
   );
 
+  console.log("====================");
+  console.log(error);
+  console.log("====================");
+
   const handelClose = () => {
     userProgressCtx.hideCheckout();
   };
